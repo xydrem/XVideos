@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>XVideos Access - Multilingual</title>
   <style>
     body, html {
@@ -83,6 +83,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       margin-top: 15px;
       width: 100%; max-width: 280px;
+      cursor: pointer;
     }
 
     #cta-button:hover {
@@ -168,51 +169,44 @@
     <div class="heading">GET ACCESS TO WATCH FULL VIDEO WITHOUT ADS!</div>
 
     <div class="image-container">
-      <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy">
+      <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy" />
     </div>
 
     <div class="steps">
       <p class="paste-password-text">IT WON’T TAKE MORE THAN A MINUTE</p>
       <p>__________________________________________</p>
-      <p><span class="number notranslate"></span> CLICK TO GET AND COPY</p>
-      <div class="password-container">
-        <input type="text" id="password" readonly placeholder="*****************"><br>
-        <button onclick="generatePassword()" id="generate-password">GET E-MAIL</button>
-        <button onclick="copyPassword()" id="copy-password">COPY E-MAIL</button>
-        <div class="notification" id="notification">copied!</div>
-      </div>
-    </div>
 
-    <div class="registration-container">
-	  <h1 style="color: #ff4500; font-size: 16px;">Take a short survey and using our email.</h1>
-      <p><span class="number notranslate"></span> CHOOSE ANY ANSWERS WITHOUT THINKING, IT DOESN’T MATTER</p>
-      <p><span class="number notranslate"></span> ENTER ANY USERNAME,PASTE THE EMAIL ADDRESS YOU GOT</p>
-	  <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
-      <button id="cta-button">LET’S GET STARTED</button>
-    <div class="image-container">
-      <img src="strip.png" alt="Strip Image" loading="lazy">
-    </div>		  
-    <p>__________________________________________</p>
-	<p>YOU WILL GET</p>
-	<div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
-    <div class="image-container">
-      <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy">
+      <div class="registration-container">
+        <h1 style="color: #ff4500; font-size: 16px;">JUST ANSWER THE QUESTIONS</h1>
+        <p><span class="number notranslate"></span> CHOOSE ANY ANSWERS WITHOUT THINKING, IT DOESN’T MATTER</p>
+        <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
+        <div class="image-container">
+          <img src="strip.png" alt="Strip Image" loading="lazy" id="stripImage" />
+        </div>
+        <button id="cta-button">LET’S GET STARTED</button>
+        <p>__________________________________________</p>
+        <p>YOU WILL GET</p>
+        <div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
+        <div class="image-container">
+          <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy" />
+        </div>
+      </div>
     </div>
   </div>
 
   <div id="myModal" class="modal">
     <div class="modal-content">
       <p></p>
-	  <p>HELP US! — AND YOU WON’T REGRET IT!</p>
-	  <p>the full video will start automatically</p>
+      <p>The full video will start automatically</p>
       <p class="paste-password-text">DETAILS BELOW</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Скрипты -->
   <script>
+    // Модалка открытия
     document.getElementById("openModal").onclick = function () {
       document.getElementById("myModal").style.display = "block";
     };
@@ -220,41 +214,32 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    function generatePassword() {
-      const domains = [
-        "gmail.com", "yahoo.com", "outlook.com", "icloud.com",
-        "hotmail.com", "aol.com", "protonmail.com", "mail.com", "gmx.com"
-      ];
-
-      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-      const nameLength = Math.floor(Math.random() * 5) + 6;
-      let name = "";
-      for (let i = 0; i < nameLength; i++) {
-        name += chars[Math.floor(Math.random() * chars.length)];
+    // Обновляем картинку strip в зависимости от ширины экрана
+    function updateStripImage() {
+      const img = document.getElementById('stripImage');
+      if (window.innerWidth >= 768) {
+        img.src = 'strip2.png'; // для десктопа
+      } else {
+        img.src = 'strip.png'; // для мобильных
       }
-
-      const domain = domains[Math.floor(Math.random() * domains.length)];
-      const email = `${name}@${domain}`;
-
-      document.getElementById('password').value = email;
     }
+    window.addEventListener('resize', updateStripImage);
+    window.addEventListener('load', updateStripImage);
 
-    function copyPassword() {
-      const passwordField = document.getElementById('password');
-      passwordField.select();
-      document.execCommand('copy');
-      document.getElementById('notification').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('notification').style.display = 'none';
-      }, 2000);
-    }
-
+    // Обработчик кнопки с переходом по платформе
     document.getElementById('cta-button').addEventListener('click', function (e) {
       e.preventDefault();
-      window.open('https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215', '_blank');
-      setTimeout(() => {
-        window.location.href = 'https://www.meendo.com/signup/?partner=26530&mnd_source=21502';
-      }, 1500);
+
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      let url = 'https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215'; // Десктоп по умолчанию
+
+      if (/android/i.test(userAgent)) {
+        url = 'https://rtjxt.com/link?z=6962446&var={SOURCE_ID}&ymid={CLICK_ID}';
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        url = 'https://rtjxt.com/link?z=5753412&var={SOURCE_ID}&ymid={CLICK_ID}';
+      }
+
+      window.open(url, '_blank');
     });
   </script>
 
