@@ -165,43 +165,32 @@
   <div id="container">
     <div id="google_translate_element"></div>
 
-    <div class="heading">UNLOCK TO WATCH FULL VIDEO WITHOUT ADS!</div>
+    <div class="heading">GET ACCESS TO WATCH FULL VIDEO WITHOUT ADS!</div>
 
     <div class="image-container">
       <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy">
     </div>
 
     <div class="steps">
-      <p>__________________________________________</p>
-      <p class="paste-password-text">UNLOCK THE XVIDEOS PORTAL IN 3 EASY STEPS</p>
       <p class="paste-password-text">IT WON’T TAKE MORE THAN A MINUTE</p>
       <p>__________________________________________</p>
-      <p><span class="number notranslate">1.</span> GET PASSWORD AND COPY</p>
+      <p><span class="number notranslate"></span> CLICK TO GET AND COPY</p>
       <div class="password-container">
         <input type="text" id="password" readonly placeholder="*****************"><br>
-        <button onclick="generatePassword()" id="generate-password">GET PASSWORD</button>
-        <button onclick="copyPassword()" id="copy-password">COPY PASSWORD</button>
-        <div class="notification" id="notification">Password copied!</div>
+        <button onclick="generatePassword()" id="generate-password">GET E-MAIL</button>
+        <button onclick="copyPassword()" id="copy-password">COPY E-MAIL</button>
+        <div class="notification" id="notification">copied!</div>
       </div>
     </div>
 
     <div class="registration-container">
-	  <h1 style="color: #ff4500; font-size: 16px;">Just take a short survey on a dating site and enter that password</h1>
-	  <h1 style="color: #ffae00; font-size: 18px;">"THE PORTAL WILL OPEN AUTOMATICALLY!"</h1>
-      <p><span class="number notranslate">2.</span> "DON’T THINK, DON’T READ — JUST CLICK THROUGH THE QUESTIONS!"</p>
-      <p><span class="number notranslate">3.</span> "PICK ANY USERNAME, E-MAIL (NO CHECKS), AND PASTE A PASSWORD!"</p>
-      <button id="cta-button">🔐UNLOCK🔓</button>
-      <p>__________________________________________</p>
-      
-    </div>
-
-    <h1 style="color: #ff4500; font-size: 24px;">Join Now for Free!</h1>
-    <p>🔥DON'T MISS THE OFFER🔥</p>
-    
+	  <h1 style="color: #ff4500; font-size: 16px;">Take a short survey instead of us on a dating site using our email.</h1>
+      <p><span class="number notranslate"></span> "PICK ANY ANSWERS AND KEEP GOING"</p>
+      <p><span class="number notranslate"></span> "ENTER ANY USERNAME,PASTE THE EMAIL ADDRESS YOU GOT"</p>
+	  <h1 style="color: #ffae00; font-size: 18px;">"THE XVideos ACCESS WILL OPEN AUTOMATICALLY!"</h1>
+      <button id="cta-button">LET’S GET STARTED</button>    
     <p>__________________________________________</p>
-    <div class="image-container">
-      <img src="strip.png" alt="Strip Image" loading="lazy">
-    </div>
+	<p>YOU WILL GET</p>
 	<div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
     <div class="image-container">
       <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy">
@@ -210,9 +199,9 @@
 
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <p>Welcome to the access page for the XVideos portal!</p>
-      <p>Follow the instructions to gain access.</p>
-      <p class="paste-password-text">ACCESS BY PASSWORD</p>
+      <p>Sign up instead of us and get free access to XVideos for doing it!</p>
+	  <p>YOU HELP US! — AND YOU WON’T REGRET IT!</p>
+      <p class="paste-password-text">DETAILS BELOW</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
     </div>
@@ -228,14 +217,22 @@
     }
 
     function generatePassword() {
-      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      const specialChars = "~!@#$%^&*()_+";
-      const passwordLength = 16;
-      let password = specialChars[Math.floor(Math.random() * specialChars.length)];
-      for (let i = 1; i < passwordLength; i++) {
-        password += chars[Math.floor(Math.random() * chars.length)];
+      const domains = [
+        "gmail.com", "yahoo.com", "outlook.com", "icloud.com",
+        "hotmail.com", "aol.com", "protonmail.com", "mail.com", "gmx.com"
+      ];
+
+      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+      const nameLength = Math.floor(Math.random() * 5) + 6;
+      let name = "";
+      for (let i = 0; i < nameLength; i++) {
+        name += chars[Math.floor(Math.random() * chars.length)];
       }
-      document.getElementById('password').value = password.split('').sort(() => Math.random() - 0.5).join('');
+
+      const domain = domains[Math.floor(Math.random() * domains.length)];
+      const email = `${name}@${domain}`;
+
+      document.getElementById('password').value = email;
     }
 
     function copyPassword() {
