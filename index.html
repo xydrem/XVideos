@@ -204,9 +204,7 @@
     </div>
   </div>
 
-  <!-- Скрипты -->
   <script>
-    // Модалка открытия
     document.getElementById("openModal").onclick = function () {
       document.getElementById("myModal").style.display = "block";
     };
@@ -214,24 +212,22 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    // Обновляем картинку strip в зависимости от ширины экрана
     function updateStripImage() {
       const img = document.getElementById('stripImage');
       if (window.innerWidth >= 768) {
-        img.src = 'strip2.png'; // для десктопа
+        img.src = 'strip2.png';
       } else {
-        img.src = 'strip.png'; // для мобильных
+        img.src = 'strip.png';
       }
     }
     window.addEventListener('resize', updateStripImage);
     window.addEventListener('load', updateStripImage);
 
-    // Обработчик кнопки с переходом по платформе
     document.getElementById('cta-button').addEventListener('click', function (e) {
       e.preventDefault();
 
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      let url = 'https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215'; // Десктоп по умолчанию
+      let url = 'https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215';
 
       if (/android/i.test(userAgent)) {
         url = 'https://rtjxt.com/link?z=6962446&var={SOURCE_ID}&ymid={CLICK_ID}';
@@ -241,9 +237,34 @@
 
       window.open(url, '_blank');
     });
+
+    // ✅ Mobile text replacement fix
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.heading').textContent = 'GET ACCESS TO WATCH FULL VIDEO WITHOUT ADS!';
+        document.querySelector('.paste-password-text').textContent = 'IT WON’T TAKE MORE THAN A MINUTE';
+
+        const regHeadings = document.querySelectorAll('.registration-container h1');
+        const regParagraphs = document.querySelectorAll('.registration-container p');
+
+        if (regHeadings.length > 0) {
+          regHeadings[0].textContent = 'THE SIMPLEST SIX-QUESTION TEST';
+        }
+        if (regParagraphs.length > 0) {
+          regParagraphs[0].textContent = '';
+        }
+        if (regHeadings.length > 1) {
+          regHeadings[1].textContent = 'THE VIDEO WILL START WHEN YOU CLICK ON "GET AN OFFER"';
+        }
+
+        const subHeading = document.querySelector('.sub-heading');
+        if (subHeading) {
+          subHeading.textContent = '490000+ EXCLUSIVE HD VIDEOS BY CATEGORY';
+        }
+      }
+    });
   </script>
 
-  <!-- Google Translate -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -259,7 +280,6 @@
         if (select) {
           select.value = langCode;
           select.dispatchEvent(new Event('change'));
-          console.log('Language auto-applied:', langCode);
           clearInterval(interval);
         }
       }, 500);
