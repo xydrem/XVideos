@@ -164,6 +164,20 @@
         color: #fff;
       }
     }
+
+    /* ✅ NEW: blinking white bold text */
+    .blink-text {
+      font-weight: bold;
+      font-size: 18px;
+      color: #ffffff;
+      animation: blink 1s infinite;
+      text-shadow: 1px 1px 8px #000;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -178,7 +192,7 @@
 
     <div class="steps">
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
-      <p>EMAIL and PASSWORD TO UNLOCK</p>
+      <p>Get E-MAIL and PASSWORD to UNLOCK</p>
 
       <div class="password-container">
         <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
@@ -198,7 +212,7 @@
 
     <div class="registration-container">
       <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
-
+      <p class="blink-text">CLICK JOIN</p>
       <div style="position: relative; height: 100vh; border-radius: 8px; overflow: hidden; margin: 15px 0;">
         <iframe
           src="https://prev.affomelody.com/click?pid=3749&offer_id=395"
@@ -218,7 +232,7 @@
 
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <p>COMPLETE A SIMPLE REGISTRATION IN THE FUN GAME TO UNLOCK THE</p>
+      <p>COMPLETE A SIMPLE REGISTRATION IN THE FUN X-GAME TO UNLOCK THE</p>
       <p class="paste-password-text">FOR DE/FR/CA/US/AU ONLY</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
@@ -234,7 +248,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Email
       const domains = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com", "hotmail.com"];
       const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
       let emailName = "";
@@ -244,7 +257,6 @@
       const emailDomain = domains[Math.floor(Math.random() * domains.length)];
       document.getElementById('email-field').value = `${emailName}@${emailDomain}`;
 
-      // Password
       const passChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
       const passLength = Math.floor(Math.random() * 2) + 15;
       let password = "";
