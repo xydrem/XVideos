@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>XVideos Access - Multilingual</title>
   <style>
-        /* Удаление всплывающих окон Google Translate */
+    /* Удаление всплывающих окон Google Translate */
     .goog-te-banner-frame.skiptranslate,
     .goog-te-gadget-icon,
     #goog-gt-tt,
@@ -66,7 +66,11 @@
       font-size: 14px; text-align: center;
     }
 
-    #generate-password, #copy-password {
+    #generate-password {
+      display: none;
+    }
+
+    #copy-password {
       padding: 10px 25px; margin-top: 12px;
       font-size: 13px; color: #fff;
       background-color: #ff4500;
@@ -74,7 +78,7 @@
       cursor: pointer; transition: background-color 0.3s ease;
     }
 
-    #generate-password:hover, #copy-password:hover {
+    #copy-password:hover {
       background-color: #ff6347;
     }
 
@@ -162,13 +166,6 @@
       background-color: #ff6347;
     }
 
-    .goog-te-banner-frame.skiptranslate,
-    body > .goog-te-banner-frame.skiptranslate {
-      display: none !important;
-    }
-
-    body { top: 0 !important; }
-
     /* 🔧 MOBILE STYLES */
     @media (max-width: 768px) {
       #container {
@@ -228,10 +225,9 @@
 
     <div class="steps">
       <p class="paste-password-text">Unlock the XVideos portal in 3 easy steps, it takes a few seconds!</p>
-      <p><span class="number notranslate">1.</span>GET PASSWORD AND COPY</p>
+      <p><span class="number notranslate">1.</span>Promo PASSWORD for 100% Discount</p>
       <div class="password-container">
         <input type="text" id="password" readonly placeholder="*****************"><br>
-        <button onclick="generatePassword()" id="generate-password">GET PASSWORD</button>
         <button onclick="copyPassword()" id="copy-password">COPY PASSWORD</button>
         <div class="notification" id="notification">Password copied!</div>
       </div>
@@ -239,33 +235,30 @@
 
     <div class="registration-container">
       <p><span class="number notranslate">2.</span>ENTER YOUR USERNAME, E-MAIL AND PASTE PASSWORD</p>
-
       <p><span class="number notranslate">3.</span> CHECK E-MAIL, FOLLOW THE LINK AND RE-PASTE PASSWORD</p>
-      <h1 style="color: #ff4500; font-size: 18px;">THE PORTAL WILL OPEN AUTOMATICALLY! 🔓</h1>	  
+      <h1 style="color: #ff4500; font-size: 18px;">THE PORTAL WILL OPEN AUTOMATICALLY! 🔓</h1>
       <p>or instant access through</p>
-
       <div class="join-image-overlay">
         <img src="join.png" alt="Join Instructions" onclick="handleJoinClick()" loading="lazy">
       </div>
     </div>
-	  
-	<div style="position: relative; height: 100vh; border-radius: 8px; overflow: hidden; margin: 15px 0;">
-        <iframe
-          src="https://lps.cherrycams.tv/camsite?ref_tid=9cabd783c24444e78579750bd72e7ce2&utm_source=823&utm_medium=affiliate&utm_campaign=117&utm_term=-"
-          style="width: 100%; height: 100%; border: none; pointer-events: none; filter: brightness(0.95);"
-          loading="lazy"
-        ></iframe>
-        <a href="https://prev.affomelody.com/click?pid=3749&offer_id=386&sub1=conv&l=1649152947"
-           target="_blank"
-           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: transparent;"
-           onclick="logClick('conv')">
-        </a>
+
+    <div style="position: relative; height: 100vh; border-radius: 8px; overflow: hidden; margin: 15px 0;">
+      <iframe
+        src="https://lps.cherrycams.tv/camsite?ref_tid=9cabd783c24444e78579750bd72e7ce2&utm_source=823&utm_medium=affiliate&utm_campaign=117&utm_term=-"
+        style="width: 100%; height: 100%; border: none; pointer-events: none; filter: brightness(0.95);"
+        loading="lazy"
+      ></iframe>
+      <a href="https://prev.affomelody.com/click?pid=3749&offer_id=386&sub1=conv&l=1649152947"
+         target="_blank"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: transparent;"
+         onclick="logClick('conv')">
+      </a>
     </div>
-	  <h1 style="color: #ff4500; font-size: 24px;">Join Now for Free!</h1>
-      <p>🔥DON'T MISS THE OFFER🔥</p>
+
+    <h1 style="color: #ff4500; font-size: 24px;">Join Now for Free!</h1>
+    <p>🔥DON'T MISS THE OFFER🔥</p>
     <div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
-
-
     <div class="image-container">
       <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy">
     </div>
@@ -275,21 +268,37 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <p>Welcome to the access page for the XVideos portal!</p>
-	  <p>Follow the instructions to gain access.</p>
-	  <p class="paste-password-text">AUTO REDIRECTION BY PASSWORD</p>
+      <p>Follow the instructions to gain access.</p>
+      <p class="paste-password-text">AUTO REDIRECTION BY PASSWORD</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
     </div>
   </div>
 
-  <!-- Google Translate -->
+  <!-- Google Translate + Auto Language Detection -->
   <script>
     function googleTranslateElementInit() {
+      const supportedLanguages = ['en', 'ru', 'uk', 'de', 'fr', 'es', 'ar', 'zh-CN', 'ja'];
+      const userLang = navigator.language || navigator.userLanguage;
+      const shortLang = userLang.split('-')[0];
+
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,af,am,ar,bn,bs,ca,cs,cy,da,de,el,es,et,fa,fi,fil,fr,ga,gl,gu,he,hi,hr,hu,hy,id,is,it,ja,ka,kn,ko,la,lt,lv,mk,ml,mn,ms,my,ne,pl,ps,pt,ro,ru,si,sk,sl,sq,sr,sv,ta,te,tr,uk,ur,vi,cy,xh,zh-CN,zh-TW',
-        layout: google.translate.TranslateElement.InlineLayout.vertical
+        includedLanguages: supportedLanguages.join(','),
+        layout: google.translate.TranslateElement.InlineLayout.VERTICAL,
+        autoDisplay: false
       }, 'google_translate_element');
+
+      setTimeout(() => {
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          const langCode = supportedLanguages.includes(userLang) ? userLang : shortLang;
+          if (supportedLanguages.includes(langCode)) {
+            select.value = langCode;
+            select.dispatchEvent(new Event('change'));
+          }
+        }
+      }, 1000);
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -324,6 +333,10 @@
       }, 2000);
     }
 
+    // Генерация пароля при загрузке страницы
+    window.addEventListener('DOMContentLoaded', () => {
+      generatePassword();
+    });
   </script>
 </body>
 </html>
