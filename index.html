@@ -192,14 +192,7 @@
 
     <div class="steps">
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
-      <p>E-MAIL and PASSWORD to UNLOCK</p>
-
-      <div class="password-container">
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-          <input type="text" id="email-field" readonly style="flex: 1; min-width: 180px;">
-          <button onclick="copyToClipboard('email-field')" id="copy-email">COPY E-MAIL</button>
-        </div>
-      </div>
+      <p>PASSWORD to UNLOCK</p>
 
       <div class="password-container">
         <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
@@ -233,7 +226,7 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <p>"Just a few quick questions — it won’t take more than a minute."</p>
-      <p class="paste-password-text">USE E-MAIL and PASSWORD to UNLOCK</p>
+      <p class="paste-password-text">USE PASSWORD to UNLOCK</p>
       <p>CONFIRM 18+!</p>
       <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
     </div>
@@ -248,15 +241,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const domains = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com", "hotmail.com"];
-      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-      let emailName = "";
-      for (let i = 0; i < Math.floor(Math.random() * 8) + 11; i++) {
-        emailName += chars[Math.floor(Math.random() * chars.length)];
-      }
-      const emailDomain = domains[Math.floor(Math.random() * domains.length)];
-      document.getElementById('email-field').value = `${emailName}@${emailDomain}`;
-
       const passChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
       const passLength = Math.floor(Math.random() * 2) + 15;
       let password = "";
