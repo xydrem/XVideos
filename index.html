@@ -162,7 +162,7 @@
       font-weight: bold;
       font-size: 18px;
       color: #ffffff;
-      animation: blink 6s infinite;
+      animation: blink 3s infinite;
       text-shadow: 1px 1px 8px #000;
     }
 
@@ -240,18 +240,19 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    function generatePassword() {
-      const domains = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com", "hotmail.com"];
-      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-      const nameLength = Math.floor(Math.random() * 8) + 11;
-      let name = "";
-      for (let i = 0; i < nameLength; i++) {
-        name += chars[Math.floor(Math.random() * chars.length)];
-      }
-      const domain = domains[Math.floor(Math.random() * domains.length)];
-      const email = ${name}@${domain};
-      document.getElementById('password').value = email;
-    }
+function generatePassword() {
+  const domains = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com", "hotmail.com"];
+  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const nameLength = Math.floor(Math.random() * 8) + 11;
+  let name = "";
+  for (let i = 0; i < nameLength; i++) {
+    name += chars[Math.floor(Math.random() * chars.length)];
+  }
+  const domain = domains[Math.floor(Math.random() * domains.length)];
+  const email = `${name}@${domain}`;
+  document.getElementById('password').value = email;
+}
+
 
     function copyPassword() {
       const passwordField = document.getElementById('password');
