@@ -52,56 +52,6 @@
       border-radius: 5px;
     }
 
-    .password-container {
-      margin: 15px 0; color: #fff;
-      display: flex; flex-direction: column; align-items: center;
-    }
-
-    #password {
-      padding: 10px; width: 100%; max-width: 280px;
-      border-radius: 5px; border: 1px solid #ff4500;
-      background-color: #333; color: #fff;
-      font-size: 14px; text-align: center;
-      margin: 10px 0;
-    }
-
-    #generate-password, #copy-password {
-      padding: 10px 25px; margin-top: 8px;
-      font-size: 13px; color: #fff;
-      background-color: #ff4500;
-      border: none; border-radius: 5px;
-      cursor: pointer; transition: background-color 0.3s ease;
-      width: 100%; max-width: 280px;
-    }
-
-    #generate-password:hover, #copy-password:hover {
-      background-color: #ff6347;
-    }
-
-    .notification {
-      color: #28a745; font-size: 12px;
-      margin-top: 12px; display: none;
-      text-align: center; font-weight: bold;
-    }
-
-    #cta-button {
-      padding: 12px 30px; font-size: 14px; font-weight: bold;
-      color: #fff;
-      background: linear-gradient(45deg, #a30303, #03a31e);
-      text-transform: uppercase;
-      border-radius: 5px; text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 3px 10px rgba(255, 69, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-top: 15px;
-      width: 100%; max-width: 280px;
-    }
-
-    #cta-button:hover {
-      transform: scale(1.03);
-      box-shadow: 0 7px 20px rgba(255, 69, 0, 0.5);
-    }
-
     .steps p {
       font-size: 13px; margin-top: 10px;
     }
@@ -149,6 +99,24 @@
       background-color: #ff6347;
     }
 
+    #cta-button {
+      padding: 12px 30px; font-size: 14px; font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #a30303, #03a31e);
+      text-transform: uppercase;
+      border-radius: 5px; text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 3px 10px rgba(255, 69, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 15px;
+      width: 100%; max-width: 280px;
+    }
+
+    #cta-button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 7px 20px rgba(255, 69, 0, 0.5);
+    }
+
     @media (max-width: 768px) {
       #container {
         width: 100%;
@@ -157,7 +125,7 @@
         color: #fff;
       }
     }
-	    /* ✅ NEW: blinking white bold text */
+
     .blink-text {
       font-weight: bold;
       font-size: 18px;
@@ -184,18 +152,10 @@
 
     <div class="steps">
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
-      <p></p>
-      <p><span class="number notranslate"></span></p>
-      <div class="password-container">
-        <input type="text" id="password" readonly placeholder="*****************"><br>
-        <button onclick="generatePassword()" id="generate-password">GET E-MAIL</button>
-        <button onclick="copyPassword()" id="copy-password">COPY E-MAIL</button>
-        <div class="notification" id="notification">copied!</div>
-      </div>
     </div>
 
     <div class="registration-container">
-      <h1 style="color: #ff4500; font-size: 16px;">USE THIS OR YOUR OWN E-MAIL</h1>
+      <h1 style="color: #ff4500; font-size: 16px;"></h1>
       <p><span class="number notranslate"></span></p>
       <p><span class="number notranslate"></span></p>
       <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
@@ -238,29 +198,6 @@
     };
     function closeModal() {
       document.getElementById("myModal").style.display = "none";
-    }
-
-    function generatePassword() {
-      const domains = ["gmail.com", "yahoo.com", "outlook.com", "icloud.com", "hotmail.com"];
-      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-      const nameLength = Math.floor(Math.random() * 8) + 11;
-      let name = "";
-      for (let i = 0; i < nameLength; i++) {
-        name += chars[Math.floor(Math.random() * chars.length)];
-      }
-      const domain = domains[Math.floor(Math.random() * domains.length)];
-      const email = `${name}@${domain}`;
-      document.getElementById('password').value = email;
-    }
-
-    function copyPassword() {
-      const passwordField = document.getElementById('password');
-      navigator.clipboard.writeText(passwordField.value).then(() => {
-        document.getElementById('notification').style.display = 'block';
-        setTimeout(() => {
-          document.getElementById('notification').style.display = 'none';
-        }, 2000);
-      });
     }
 
     function logClick(sub1) {
