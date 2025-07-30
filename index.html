@@ -183,6 +183,10 @@
     .offer-iframe-wrap.ratio-9-16 .offer-iframe {
       position: absolute;
     }
+	    .paste-password-text {
+      font-size: 13px; color: #ff4500;
+      margin: 0; text-align: center; font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -202,7 +206,7 @@
 
     <div class="registration-container">
       <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
-      <p class="blink-text">FILL OUT THE FORM</p>
+      <p class="blink-text"></p>
 
       <!-- ==================================================
            ✅ РЕЗИНОВЫЙ КОНТЕЙНЕР ДЛЯ СТОРОННЕГО IFRAME
@@ -228,12 +232,12 @@
     </div>
   </div>
 
-  <!-- ===== Modal ===== -->
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <p>FILL OUT THE FORM BELOW TO VIEW THE FULL VIDEO</p>
+      <p>CONFIRMATION IS REQUIRED</p>
+      <p class="paste-password-text">CONFIRM 18+</p>
       <p></p>
-      <button class="close-button" onclick="closeModal()">I'm ready</button>
+      <button class="close-button" onclick="closeModal()">I'M READY</button>
     </div>
   </div>
 
