@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>XVideos Access - Multilingual</title>
   <style>
-    /* --- Google Translate скрыть лишнее --- */
     .goog-te-banner-frame.skiptranslate,
     .goog-te-gadget-icon,
     #goog-gt-tt,
@@ -16,7 +15,6 @@
     body { top: 0 !important; }
     body > .skiptranslate { display: none !important; }
 
-    /* --- Общий фон и контейнер --- */
     body, html {
       margin: 0; padding: 0; width: 100%; height: 100%;
       font-family: Arial, sans-serif;
@@ -72,7 +70,6 @@
       color: #ff4500;
     }
 
-    /* --- Модалка --- */
     .modal {
       display: none; position: fixed; z-index: 1000;
       left: 0; top: 0; width: 100%; height: 100%;
@@ -116,74 +113,7 @@
       50% { opacity: 0; }
     }
 
-    /* =========================================================
-       РЕЗИНОВЫЙ КОНТЕЙНЕР ДЛЯ ВНЕШНЕГО IFRAME (СТОРОННИЙ ДОМЕН)
-       =========================================================
-       Стратегия:
-       - Управляем высотой контейнера, iframe занимает 100%.
-       - Используем CSS-переменную --vh, обновляем через JS (fix mobile).
-       - Медиа-переопределения: больше высота на узких экранах.
-       - Можно быстро сменить режимы (vh, ratio, fixed) через модификаторы классов.
-    */
-    :root {
-      /* JS запишет сюда фактическую 1% высоты окна */
-      --vh: 1vh;
-    }
-
-    .offer-iframe-wrap {
-      width: 100%;
-      /* базовый режим: 80% высоты экрана */
-      height: calc(var(--vh, 1vh) * 80);
-      border-radius: 8px;
-      overflow: hidden;
-      margin: 15px 0;
-      position: relative;
-      background: rgba(0,0,0,.2);
-    }
-    /* Мобильник: почти весь экран */
-    @media (max-width: 768px) {
-      .offer-iframe-wrap {
-        height: calc(var(--vh, 1vh) * 90);
-      }
-    }
-    /* Очень узкие: практически полный экран */
-    @media (max-width: 480px) {
-      .offer-iframe-wrap {
-        height: calc(var(--vh, 1vh) * 95);
-      }
-    }
-
-    /* ----- Доп. режимы (подключай при необходимости) ----- */
-
-    /* Горизонтальное видео 16:9 через aspect-ratio */
-    .offer-iframe-wrap.ratio-16-9 {
-      height: auto;
-      aspect-ratio: 16 / 9;
-    }
-
-    /* Вертикальное (мобильное) 9:16 */
-    .offer-iframe-wrap.ratio-9-16 {
-      height: auto;
-      aspect-ratio: 9 / 16;
-    }
-
-    /* Жёстко пиксели (fallback для старых браузеров) */
-    .offer-iframe-wrap.fixed-600 {
-      height: 600px !important;
-    }
-
-    .offer-iframe {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-
-    /* Если ratio-класс активен, позиционирование меняем */
-    .offer-iframe-wrap.ratio-16-9 .offer-iframe,
-    .offer-iframe-wrap.ratio-9-16 .offer-iframe {
-      position: absolute;
-    }
-	    .paste-password-text {
+    .paste-password-text {
       font-size: 13px; color: #ff4500;
       margin: 0; text-align: center; font-weight: bold;
     }
@@ -208,45 +138,34 @@
       <h1 style="color: #ffae00; font-size: 18px;">You will be immediately redirected to XVideos!</h1>
       <p class="blink-text">just answer the questions</p>
 
-      <!-- ==================================================
-           ✅ РЕЗИНОВЫЙ КОНТЕЙНЕР ДЛЯ СТОРОННЕГО IFRAME
-           Управляется через CSS var + JS, см. ниже.
-           Чтобы поменять режим (например, 16:9), добавь класс:
-           class="offer-iframe-wrap ratio-16-9"
-           ================================================== -->
-      <div style="position: relative; height: 100vh; border-radius: 8px; overflow: hidden; margin: 15px 0;">
-        <iframe
-          src="https://tone.affomelody.com/click?pid=3749&offer_id=795&l=1703486163"
-          style="width: 100%; height: 95%; border: none; pointer-events: none; filter: brightness(0.95);"
-          loading="lazy"
-        ></iframe>
-        <a href="https://tone.affomelody.com/click?pid=3749&offer_id=795&l=1703486163"
-           target="_blank"
-           style="position: absolute; top: 0; left: 0; width: 95%; height: 100%; z-index: 10; background: transparent;"
-           onclick="logClick('conv')">
+      <!-- ✅ strip.png с обёрткой-ссылкой -->
+      <div class="image-container">
+        <a href="https://tone.affomelody.com/click?pid=3749&offer_id=795&l=1703486163" target="_blank">
+          <img src="strip.png" alt="Strip Image" loading="lazy" style="max-width: 100%; border-radius: 8px; cursor: pointer;">
         </a>
       </div>
+
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
       <p>YOU WILL GET</p>
       <div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
       <div class="image-container">
         <a href="https://tone.affomelody.com/click?pid=3749&offer_id=795&l=1703486163" target="_blank">
-      <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy" style="cursor: pointer;">
+          <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy" style="cursor: pointer;">
         </a>
+      </div>
     </div>
 
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <p></p>
-      <p class="paste-password-text">SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</p>
-      <p></p>
-      <button class="close-button" onclick="closeModal()">I'M READY</button>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p></p>
+        <p class="paste-password-text">SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</p>
+        <p></p>
+        <button class="close-button" onclick="closeModal()">I'M READY</button>
+      </div>
     </div>
   </div>
 
-  <!-- ===== Scripts ===== -->
   <script>
-    /* --- Modal --- */
     document.getElementById("openModal").onclick = function () {
       document.getElementById("myModal").style.display = "block";
     };
@@ -254,14 +173,6 @@
       document.getElementById("myModal").style.display = "none";
     }
 
-    /* =========================================================
-       МОБИЛЬНЫЙ VH FIX
-       ---------------------------------------------------------
-       Проблема: на iOS/Android при прокрутке и появлении UI-браузера
-       100vh меняется. Мы вычисляем фактическую высоту окна и пишем
-       в --vh, после чего контейнеры на основе calc(var(--vh)*N)
-       становятся "резиновыми" и ближе к реальности.
-    ========================================================== */
     function setVhVar() {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', vh + 'px');
@@ -270,35 +181,6 @@
     window.addEventListener('orientationchange', setVhVar);
     document.addEventListener('DOMContentLoaded', setVhVar);
 
-    /* =========================================================
-       ДОП. РЕЖИМЫ (по желанию)
-       Если захочешь переключать поведение в зависимости от ориентации,
-       можно динамически менять классы/стили контейнера.
-    ========================================================== */
-    function autoModeByOrientation() {
-      const wrap = document.getElementById('offerFrameWrap');
-      if (!wrap) return;
-      // очистим ratio-классы
-      wrap.classList.remove('ratio-16-9','ratio-9-16','fixed-600');
-      // пример: если ширина > высоты — горизонталь → 16:9
-      if (window.innerWidth > window.innerHeight) {
-        // закомментируй если не нужно:
-        // wrap.classList.add('ratio-16-9');
-        // wrap.dataset.heightMode = 'ratio';
-      } else {
-        // вертикаль:
-        // wrap.classList.add('ratio-9-16');
-        // wrap.dataset.heightMode = 'ratio';
-      }
-      // по умолчанию оставляем режим vh (как в CSS), ничего не делаем
-    }
-    window.addEventListener('resize', autoModeByOrientation);
-    window.addEventListener('orientationchange', autoModeByOrientation);
-    document.addEventListener('DOMContentLoaded', autoModeByOrientation);
-  </script>
-
-  <!-- ===== Google Translate ===== -->
-  <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
