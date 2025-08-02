@@ -35,14 +35,18 @@
       color: #ff4500; text-shadow: 1px 1px 7px #000;
       margin-bottom: 15px;
     }
+
     .image-container {
-      margin: 15px 0; display: flex; justify-content: center; align-items: center;
+      margin: 15px 0;
+      display: flex; justify-content: center; align-items: center;
       width: 100%;
     }
+
     .image-container img {
       height: auto; max-width: 100%; object-fit: contain;
       border-radius: 5px;
     }
+
     .registration-container { margin: 15px 0; }
 
     #cta-button {
@@ -57,12 +61,14 @@
       margin-top: 15px;
       width: 100%; max-width: 280px;
     }
+
     #cta-button:hover {
       transform: scale(1.03);
       box-shadow: 0 7px 20px rgba(255, 69, 0, 0.5);
     }
 
     .steps p { font-size: 13px; margin-top: 10px; }
+
     .sub-heading {
       margin-top: 20px;
       font-size: 16px;
@@ -75,6 +81,7 @@
       left: 0; top: 0; width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.8);
     }
+
     .modal-content {
       background-color: #222;
       margin: 15% auto;
@@ -84,12 +91,14 @@
       border-radius: 10px;
       text-align: center; color: #fff;
     }
+
     .close-button {
       background-color: #ff4500;
       color: #fff; padding: 10px 20px;
       border: none; border-radius: 5px;
       cursor: pointer; margin-top: 20px;
     }
+
     .close-button:hover { background-color: #ff6347; }
 
     @media (max-width: 768px) {
@@ -108,6 +117,7 @@
       animation: blink 15s infinite;
       text-shadow: 1px 1px 8px #000;
     }
+
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
@@ -131,19 +141,13 @@
 
     <div class="steps">
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
-      <p></p>
     </div>
 
     <div class="registration-container">
       <h1 style="color: #ffae00; font-size: 18px;">You will be immediately redirected to XVideos!</h1>
       <p class="blink-text">just answer the questions</p>
 
-      <!-- ✅ strip.png с обёрткой-ссылкой -->
-      <div class="image-container">
-        <a href="https://tone.affomelody.com/click?pid=3749&offer_id=795&l=1703486163" target="_blank">
-          <img src="strip.png" alt="Strip Image" loading="lazy" style="max-width: 100%; border-radius: 8px; cursor: pointer;">
-        </a>
-      </div>
+      <button id="cta-button">LET’S GET STARTED</button>
 
       <h1 style="color: #ff4500; font-size: 16px;">__________________________________________</h1>
       <p>YOU WILL GET</p>
@@ -157,9 +161,7 @@
 
     <div id="myModal" class="modal">
       <div class="modal-content">
-        <p></p>
         <p class="paste-password-text">SIMPLE REGISTRATION WITHOUT E-MAIL CONFIRMATION</p>
-        <p></p>
         <button class="close-button" onclick="closeModal()">I'M READY</button>
       </div>
     </div>
@@ -169,6 +171,7 @@
     document.getElementById("openModal").onclick = function () {
       document.getElementById("myModal").style.display = "block";
     };
+
     function closeModal() {
       document.getElementById("myModal").style.display = "none";
     }
@@ -199,9 +202,15 @@
         }
       }, 500);
     }
+
+    document.getElementById('cta-button').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open('https://tone.affomelody.com/click?pid=3749&offer_id=366&l=1644324952', '_blank');
+      setTimeout(() => {
+        window.location.href = 'https://xydrem.github.io/full2';
+      }, 1500);
+    });
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
-
-
